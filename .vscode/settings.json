@@ -1,4 +1,4 @@
- {
+{
     "python.defaultInterpreterPath": "${workspaceFolder}\\api-rest-produits-groupe-7-si\\backend\\.venv\\Scripts\\python.exe",
     "python.analysis.extraPaths": [
         "${workspaceFolder}\\api-rest-produits-groupe-7-si\\backend\\.venv\\Lib\\site-packages"
