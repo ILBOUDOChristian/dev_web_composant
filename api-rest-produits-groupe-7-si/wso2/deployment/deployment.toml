@@ -1,0 +1,12 @@
+[server]
+hostname = "localhost"
+
+[[datasource]]
+id = "PRODUCTS_DB"
+url = "jdbc:postgresql://${WSO2_DB_HOST}:${WSO2_DB_PORT}/${WSO2_DB_NAME}?search_path=source,cible"
+username = "${WSO2_DB_USER}"
+password = "${WSO2_DB_PASSWORD}"
+driver = "org.postgresql.Driver"
+pool_options.maxActive = 10
+pool_options.maxWait = 60000
+pool_options.testOnBorrow = true

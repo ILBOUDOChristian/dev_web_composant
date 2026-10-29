@@ -1,0 +1,338 @@
+/* Bottom Panels (Sync & Gateway) */
+.dash-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+  padding: 24px;
+}
+
+.panel-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.panel-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.panel-icon-wrap {
+  width: 32px;
+  height: 32px;
+  color: var(--color-brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.panel-icon-wrap svg {
+  width: 24px;
+  height: 24px;
+}
+
+.panel-heading {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.sync-databases-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.db-status-chip {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.db-icon-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-brand);
+  flex-shrink: 0;
+}
+
+.db-info-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.db-label-name {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.db-conn-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-success-text);
+}
+
+.db-conn-indicator::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-success);
+}
+
+.db-port-hint {
+  font-size: 0.76rem;
+  color: var(--text-dimmed);
+}
+
+.panel-actions-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 6px;
+}
+
+.btn-secondary-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border: 1px solid var(--color-brand-border);
+  background: #ffffff;
+  color: var(--color-brand);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.86rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.btn-secondary-action:hover {
+  background: var(--color-brand-soft);
+}
+
+.link-subtle-arrow {
+  color: var(--color-brand);
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.link-subtle-arrow:hover {
+  text-decoration: underline;
+}
+
+/* Gateway Panel Specifics */
+.gateway-endpoint-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  font-size: 0.85rem;
+}
+
+.gateway-endpoint-label {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.gateway-code-box {
+  background: #f8fafc;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 5px 12px;
+  font-family: monospace;
+  font-size: 0.84rem;
+  color: #334155;
+  letter-spacing: -0.01em;
+}
+
+.gateway-log-pill {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  margin-bottom: 16px;
+}
+
+.gateway-log-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: monospace;
+}
+
+.method-tag {
+  color: #16a34a;
+  font-weight: 700;
+}
+
+.status-code-tag {
+  color: #15803d;
+  font-weight: 600;
+}
+
+.log-date-text {
+  color: var(--text-dimmed);
+  font-size: 0.78rem;
+}
+
+/* Modals */
+.modal-overlay {
+  border: none;
+  border-radius: var(--radius-xl);
+  padding: 0;
+  box-shadow: var(--shadow-modal);
+  margin: auto;
+  max-width: 520px;
+  width: 90%;
+  background: #ffffff;
+}
+
+.modal-overlay::backdrop {
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(4px);
+}
+
+.modal-form-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-head {
+  padding: 22px 24px;
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-head h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.btn-dismiss {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: var(--text-dimmed);
+  line-height: 1;
+}
+
+.btn-dismiss:hover {
+  color: var(--text-main);
+}
+
+.modal-body-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field-group label {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.field-group input,
+.field-group textarea,
+.field-group select {
+  padding: 10px 14px;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+  font-family: inherit;
+  color: var(--text-main);
+  outline: none;
+}
+
+.field-group input:focus,
+.field-group textarea:focus {
+  border-color: var(--color-brand);
+}
+
+.modal-foot {
+  padding: 18px 24px;
+  background: #f8fafc;
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+}
+
+.btn-ghost {
+  padding: 9px 18px;
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-ghost:hover {
+  background: #f1f5f9;
+}
+
+/* Toast */
+.notice-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  padding: 12px 20px;
+  border-radius: var(--radius-lg);
+  background: #ffffff;
+  box-shadow: var(--shadow-modal);
+  transform: translateY(120px);
+  transition: var(--transition-normal);
+  z-index: 1000;
+  font-size: 0.88rem;
+  font-weight: 500;
+  border-left: 4px solid var(--color-brand);
+}
+
+.notice-toast.active {
+  transform: translateY(0);
+}
+
+.notice-toast.tone-danger {
+  border-left-color: var(--color-danger);
+}

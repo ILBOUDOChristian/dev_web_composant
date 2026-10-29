@@ -1,0 +1,250 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2026-10-22T14:35:00.000Z",
+  "__export_source": "groupe7si-products-api",
+  "resources": [
+    {
+      "_id": "wrk_products_groupe7",
+      "parentId": null,
+      "modified": 1792679700000,
+      "created": 1792679700000,
+      "name": "Groupe 7 - Products API",
+      "description": "Tests de l'assemblage Python, WSO2 MI et PostgreSQL.",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "env_products_groupe7",
+      "parentId": "wrk_products_groupe7",
+      "modified": 1792679700000,
+      "created": 1792679700000,
+      "name": "Base Environment",
+      "data": {
+        "python_base_url": "http://localhost:8001",
+        "wso2_base_url": "http://localhost:8291"
+      },
+      "dataPropertyOrder": null,
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 0,
+      "_type": "environment"
+    },
+    {
+      "_id": "req_python_health",
+      "parentId": "wrk_products_groupe7",
+      "modified": 1792679700000,
+      "created": 1792679700000,
+      "url": "{{ _.python_base_url }}/health",
+      "name": "Python - Health",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": 1000,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingRebuildPath": true,
+      "settingEncodeUrl": true,
+      "settingDisableRenderRequestBody": false,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_python_list",
+      "parentId": "wrk_products_groupe7",
+      "modified": 1792679700000,
+      "created": 1792679700000,
+      "url": "{{ _.python_base_url }}/api/v1/products",
+      "name": "Python - List products",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": 1010,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingRebuildPath": true,
+      "settingEncodeUrl": true,
+      "settingDisableRenderRequestBody": false,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_python_create",
+      "parentId": "wrk_products_groupe7",
+      "modified": 1792679700000,
+      "created": 1792679700000,
+      "url": "{{ _.python_base_url }}/api/v1/products",
+      "name": "Python - Create product",
+      "description": "Use a unique SKU for each run.",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"sku\": \"INSOMNIA-001\",\n  \"name\": \"Produit Insomnia\",\n  \"description\": \"Test CRUD\",\n  \"price\": \"8.50\",\n  \"stock\": 3\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": 1020,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingRebuildPath": true,
+      "settingEncodeUrl": true,
+      "settingDisableRenderRequestBody": false,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_python_update",
+      "parentId": "wrk_products_groupe7",
+      "modified": 1792679700000,
+      "created": 1792679700000,
+      "url": "{{ _.python_base_url }}/api/v1/products/REPLACE_ID",
+      "name": "Python - Update product",
+      "description": "Replace REPLACE_ID with the id returned by the create request.",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"sku\": \"INSOMNIA-001\",\n  \"name\": \"Produit Insomnia modifie\",\n  \"description\": \"Test CRUD modifie\",\n  \"price\": \"9.00\",\n  \"stock\": 5\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": 1030,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingRebuildPath": true,
+      "settingEncodeUrl": true,
+      "settingDisableRenderRequestBody": false,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_python_delete",
+      "parentId": "wrk_products_groupe7",
+      "modified": 1792679700000,
+      "created": 1792679700000,
+      "url": "{{ _.python_base_url }}/api/v1/products/REPLACE_ID",
+      "name": "Python - Delete product",
+      "description": "Replace REPLACE_ID with the id returned by the create request.",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": 1040,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingRebuildPath": true,
+      "settingEncodeUrl": true,
+      "settingDisableRenderRequestBody": false,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_wso2_transfer",
+      "parentId": "wrk_products_groupe7",
+      "modified": 1792679700000,
+      "created": 1792679700000,
+      "url": "{{ _.wso2_base_url }}/products/transfer",
+      "name": "WSO2 - Transfer product",
+      "description": "Reads source.products, trims the name and upserts cible.products.",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"sku\": \"KB-001\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": 1050,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingRebuildPath": true,
+      "settingEncodeUrl": true,
+      "settingDisableRenderRequestBody": false,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_wso2_transfer_not_found",
+      "parentId": "wrk_products_groupe7",
+      "modified": 1792679700000,
+      "created": 1792679700000,
+      "url": "{{ _.wso2_base_url }}/products/transfer",
+      "name": "WSO2 - Transfert (404 SKU absent)",
+      "description": "Transfert avec un SKU inexistant dans source.products -> Retourne 404.",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"sku\": \"UNKNOWN-SKU-999\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": 1055,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingRebuildPath": true,
+      "settingEncodeUrl": true,
+      "settingDisableRenderRequestBody": false,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_python_get_not_found",
+      "parentId": "wrk_products_groupe7",
+      "modified": 1792679700000,
+      "created": 1792679700000,
+      "url": "{{ _.python_base_url }}/api/v1/products/99999",
+      "name": "Python - Get product (404 Not Found)",
+      "description": "Consultation d'un ID inexistant -> Retourne 404 Product not found.",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": 1025,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingRebuildPath": true,
+      "settingEncodeUrl": true,
+      "settingDisableRenderRequestBody": false,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    }
+  ]
+}

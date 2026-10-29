@@ -1,0 +1,69 @@
+# Environnement local & Secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+.venv/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+
+# WSO2 & Java / Maven
+wso2/target/
+wso2/lib/*.jar
+wso2/.mvn/timing.properties
+wso2/.mvn/wrapper/maven-wrapper.jar
+wso2/deployment/libs/*.jar
+wso2/deployment/docker/resources/*.jks
+*.class
+*.jar
+*.war
+*.ear
+
+# Bases de données & Conteneurs
+postgres-data/
+pgadmin-data/
+*.db
+*.sqlite3
+
+# Logs & Fichiers temporaires
+*.log
+*.tmp
+*.bak
+*.backup.pptx
+*.swp
+*~
+
+# IDE & Editeurs
+.vscode/*
+!.vscode/settings.json
+!.vscode/launch.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db

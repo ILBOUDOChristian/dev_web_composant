@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api xmlns="http://ws.apache.org/ns/synapse" name="ProductTransferAPI" context="/products">
+    <resource methods="POST" uri-template="/transfer">
+        <inSequence>
+            <property name="sku" expression="json-eval($.sku)" scope="default" type="STRING"/>
+            <dblookup>
+                <connection>
+                    <pool>
+                        <dsName>jdbc/PRODUCTS_DB</dsName>
+                    </pool>
+                </connection>
+                <statement>
+                    <sql>SELECT sku, name, description, price, stock FROM source.products WHERE sku = ?</sql>
+                    <parameter expression="get-property('sku')" type="VARCHAR"/>
+                    <result name="productSku" column="sku"/>
+                    <result name="productName" column="name"/>
+                    <result name="productDescription" column="description"/>
+                    <result name="productPrice" column="price"/>
+                    <result name="productStock" column="stock"/>
+                </statement>
+            </dblookup>
+            <filter source="get-property('productSku')" regex=".+">
+                <then>
+                    <property name="productName" expression="fn:normalize-space(get-property('productName'))" scope="default" type="STRING"/>
+                    <dbreport useTransaction="true">
+                        <connection>
+                            <pool>
+                                <dsName>jdbc/PRODUCTS_DB</dsName>
+                            </pool>
+                        </connection>
+                        <statement>
+                            <sql>INSERT INTO cible.products (sku, name, description, price, stock) VALUES (?, ?, ?, ?, ?) ON CONFLICT (sku) DO UPDATE SET name = EXCLUDED.name, description = EXCLUDED.description, price = EXCLUDED.price, stock = EXCLUDED.stock, updated_at = CURRENT_TIMESTAMP</sql>
+                            <parameter expression="get-property('productSku')" type="VARCHAR"/>
+                            <parameter expression="get-property('productName')" type="VARCHAR"/>
+                            <parameter expression="get-property('productDescription')" type="VARCHAR"/>
+                            <parameter expression="get-property('productPrice')" type="DECIMAL"/>
+                            <parameter expression="get-property('productStock')" type="INTEGER"/>
+                        </statement>
+                    </dbreport>
+                    <payloadFactory media-type="xml">
+                        <format>
+                            <transferResult status="transferred" sku="$1" name="$2"/>
+                        </format>
+                        <args>
+                            <arg expression="get-property('productSku')"/>
+                            <arg expression="get-property('productName')"/>
+                        </args>
+                    </payloadFactory>
+                    <property name="messageType" value="application/xml" scope="axis2"/>
+                    <respond/>
+                </then>
+                <else>
+                    <property name="HTTP_SC" value="404" scope="axis2"/>
+                    <payloadFactory media-type="xml">
+                        <format>
+                            <transferResult status="not_found" sku="$1"/>
+                        </format>
+                        <args>
+                            <arg expression="get-property('sku')"/>
+                        </args>
+                    </payloadFactory>
+                    <property name="messageType" value="application/xml" scope="axis2"/>
+                    <respond/>
+                </else>
+            </filter>
+        </inSequence>
+        <outSequence/>
+        <faultSequence>
+            <property name="HTTP_SC" value="500" scope="axis2"/>
+            <payloadFactory media-type="xml">
+                <format>
+                    <transferResult status="error" message="$1"/>
+                </format>
+                <args>
+                    <arg expression="get-property('ERROR_MESSAGE')"/>
+                </args>
+            </payloadFactory>
+            <property name="messageType" value="application/xml" scope="axis2"/>
+            <respond/>
+        </faultSequence>
+    </resource>
+</api>

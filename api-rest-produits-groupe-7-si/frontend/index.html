@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Produits — Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/variables.css">
+  <link rel="stylesheet" href="styles/layout.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/table.css">
+  <link rel="stylesheet" href="styles/utils.css">
+</head>
+<body>
+  <div class="app-shell" id="app-root">
+    <!-- Sidebar dynamically mounted here -->
+
+    <div class="main-viewport">
+      <main class="page-container">
+        <header class="page-head" id="main-page-header">
+          <h1 id="view-title">Dashboard</h1>
+          <p id="view-subtitle">Vue d'ensemble et état en temps réel de votre API Produits</p>
+        </header>
+
+        <!-- Dynamic view content container -->
+        <div id="view-content-root"></div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      import('./app.js?v=' + Date.now()).catch(err => {
+        console.error('Erreur chargement application:', err);
+      });
+    });
+  </script>
+</body>
+</html>
